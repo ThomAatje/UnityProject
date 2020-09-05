@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3130266456604184428}
   - component: {fileID: 7037463856726627788}
   - component: {fileID: 1944178947501680393}
+  - component: {fileID: 7251552644455231859}
   m_Layer: 0
   m_Name: zombie_man
   m_TagString: Enemy
@@ -145,4 +146,21 @@ MonoBehaviour:
   _armor: 50
   _maxArmor: 50
   _maxArmorModifier: 100
+  targetObject: {fileID: 0}
   goalPosition: {x: 10, y: 0, z: 0}
+--- !u!111 &7251552644455231859
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3069078334261017266}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: -203655887218126122, guid: 3005381cf50ef2a4abaea51b38e73a1f,
+    type: 3}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
