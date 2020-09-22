@@ -11,7 +11,6 @@ public class ZombieSpawner : MonoBehaviour
     public GameObject[] SpawnPoints;
 
     private float CurrentSpawnTime = 0;
-
     // Start is called before the first frame update
     void Start()
     {
