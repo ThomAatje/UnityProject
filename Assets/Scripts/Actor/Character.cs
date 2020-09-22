@@ -19,12 +19,20 @@ namespace Assets.Scripts.Actor
         private float _defaultHealth;
         private float _defaultArmor;
 
-        private void Start()
+        public bool IsDead
+        {
+            get
+            {
+                return _isDead;
+            }
+        }
+
+        private void Awake()
         {
             _defaultHealth = _maxHealth;
             _defaultArmor = _maxArmorModifier;
 
-            DamageCalculator = GetComponent<IDamageCalculator>();
+            DamageCalculator = GetComponent<DamageCalculator>();
 
             if (DamageCalculator == null)
                 throw new NullReferenceException("A component with the IDamageCalculator is required for a Character.");
@@ -36,7 +44,7 @@ namespace Assets.Scripts.Actor
         /// <param name="amount">The amount of damage</param>
         /// <param name="sender">Who caused the damage</param>
         /// <param name="ignoreArmor">Whether or the armor need to be ignored</param>
-        public void TakeDamage(float amount, GameObject sender, bool ignoreArmor = false)
+        public virtual void TakeDamage(float amount, GameObject sender, bool ignoreArmor = false)
         {
             if (_isDead)
                 return;
@@ -46,7 +54,7 @@ namespace Assets.Scripts.Actor
 
             _health -= amount;
 
-            if (_health < 0)
+            if (_health <= 0)
             {
                 Die(sender);
                 return;
@@ -74,7 +82,7 @@ namespace Assets.Scripts.Actor
             _maxArmor = _maxArmor + amount > _maxArmorModifier ? _maxArmorModifier : _maxArmor;
 
 
-        protected void Die(GameObject sender)
+        protected virtual void Die(GameObject sender)
         {
             Debug.Log($"Character was killed by: {sender}", this);
             _isDead = true;
