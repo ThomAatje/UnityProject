@@ -169,7 +169,7 @@ namespace Assets.Scripts.Movement
         {
             Gizmos.color = Color.cyan;
             Debug.DrawLine(transform.position, transform.position + Vector3.down * CurrentHitDistance);
-            Gizmos.DrawWireSphere(transform.position + Vector3.down * CurrentHitDistance, 0.5f);
+            Gizmos.DrawWireSphere(transform.position + Vector3.down * CurrentHitDistance, Controller.radius);
         }
     }
 }

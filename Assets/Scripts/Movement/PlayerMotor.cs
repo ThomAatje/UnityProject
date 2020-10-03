@@ -65,7 +65,7 @@ namespace Assets.Scripts.Movement
         private void UpdateJumpActivity()
         {
             UpdateJumpOnGround();
-            Throttle.y /= 1f + _jumpForceDamping;
+            Throttle.y /= 1.0f + _jumpForceDamping;
         }
 
         private void UpdateJumpOnGround()
@@ -82,13 +82,11 @@ namespace Assets.Scripts.Movement
                 {
                     FallSpeed = 0f;
                     Throttle.y = _doubleJumpForce * 2 / Time.timeScale;
-
                     _onDoubleJump?.Invoke();
                     _jumpReady = false;
                     _doubleJumpCurrentAmount--;
                     _doubleJumpNextTimestamp = Time.time + _doubleJumpMinimumAirTime;
                 }
-
                 return;
             }
 
@@ -99,7 +97,6 @@ namespace Assets.Scripts.Movement
                 _onJump?.Invoke();
                 _doubleJumpNextTimestamp = Time.time + _doubleJumpMinimumAirTime;
                 _jumpReady = false;
-
                 Throttle.y = _jumpForce / Time.timeScale;
             }
         }
@@ -108,7 +105,7 @@ namespace Assets.Scripts.Movement
         {
             if (_dashCurrentChargeTime < _dashDefaultChargeTime)
             {
-                _dashCurrentChargeTime += Time.fixedDeltaTime * (1f + _dashChargeTimeModifier) * Time.timeScale;
+                _dashCurrentChargeTime += Time.fixedDeltaTime * (1f + _dashChargeTimeModifier);
                 if (_dashCurrentAmount > 1)
                 {
                     _dashCurrentAmount = Mathf.RoundToInt(Mathf.Clamp(_dashCurrentChargeTime / (_dashDefaultChargeTime / _dashDefaultAmount), 0, _dashDefaultAmount));

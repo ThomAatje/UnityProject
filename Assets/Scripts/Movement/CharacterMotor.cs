@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Movement
 {
@@ -33,7 +28,6 @@ namespace Assets.Scripts.Movement
         protected override void Awake()
         {
             base.Awake();
-
             OnGroundContact.AddListener(() => ForceAirSpeedDamping = false);
         }
 
@@ -90,7 +84,6 @@ namespace Assets.Scripts.Movement
                 Mathf.Abs(_moveDirection.z) < 0.0001f ? 0.0f : _moveDirection.z);
 
             Controller.Move(_moveDirection * Time.timeScale);
-
             base.FixedMove();
         }
     }

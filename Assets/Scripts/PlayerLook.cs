@@ -31,7 +31,7 @@ namespace Assets.Scripts
                 TargetCharacterDirection = CharacterBody.transform.localRotation.eulerAngles;
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             // Ensure the cursor is always locked when set
             if (LockCursor)
@@ -66,19 +66,19 @@ namespace Assets.Scripts
 
             transform.localRotation = Quaternion.AngleAxis(-_mouseAbsolute.y, targetOrientation * Vector3.right) * targetOrientation;
 
-            if (CharacterBody)
+            //if (CharacterBody)
             {
                 var yRotation = Quaternion.AngleAxis(_mouseAbsolute.x, Vector3.up);
                 CharacterBody.transform.localRotation = yRotation * targetCharacterOrientation;
             }
-            else
+            //else
             {
                 var yRotation = Quaternion.AngleAxis(_mouseAbsolute.x, transform.InverseTransformDirection(Vector3.up));
                 transform.localRotation *= yRotation;
             }
 
-            //transform.position =
-                //Vector3.Lerp(transform.position, CharacterBody.transform.position + Vector3.up * HeightOffset, SmoothTime);
+            transform.position =
+                Vector3.Lerp(transform.position, CharacterBody.transform.position + Vector3.up * HeightOffset, Time.deltaTime * SmoothTime);
         }
     }
 }
