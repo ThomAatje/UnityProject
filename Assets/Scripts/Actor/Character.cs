@@ -36,7 +36,7 @@ namespace Assets.Scripts.Actor
         /// <param name="amount">The amount of damage</param>
         /// <param name="sender">Who caused the damage</param>
         /// <param name="ignoreArmor">Whether or the armor need to be ignored</param>
-        public void TakeDamage(float amount, GameObject sender, bool ignoreArmor = false)
+        public void TakeDamage(float amount, bool ignoreArmor = false)
         {
             if (_isDead)
                 return;
@@ -48,7 +48,7 @@ namespace Assets.Scripts.Actor
 
             if (_health < 0)
             {
-                Die(sender);
+                Die();
                 return;
             }
 
@@ -74,10 +74,11 @@ namespace Assets.Scripts.Actor
             _maxArmor = _maxArmor + amount > _maxArmorModifier ? _maxArmorModifier : _maxArmor;
 
 
-        protected void Die(GameObject sender)
+        protected void Die()
         {
-            Debug.Log($"Character was killed by: {sender}", this);
+            Debug.Log($"Character was killed", this);
             _isDead = true;
+            Destroy(gameObject);
         }
     }
 }
