@@ -1,122 +1,156 @@
-﻿using UnityEngine;
-using Vector2 = UnityEngine.Vector2;
-using Vector3 = UnityEngine.Vector3;
+﻿using Assets.Scripts.Activities;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Movement
 {
-    public class PlayerMotor : MonoBehaviour
+    public class PlayerMotor : CharacterMotor
     {
-        public Vector3 Drag;
-        public float DashDistance = 5f;
-        public AudioClip JumpAudioClip;
-        public AudioClip DoubleJumpAudioClip;
-        public float DoubleJumpTimeout = 0.2f;
-        public float DoubleJumpMark = 0;
-        public float DashMark;
-        public float DashTimeout = 0.3f;
-        public AudioClip DashAudioClip;
-        public AudioSource Source;
+        [Header("Jumping")]
+        [SerializeField] private UnityEvent _onJump;
+        [SerializeField] private bool _jumpAutomatic = false;
+        [SerializeField] private float _jumpForce = 0.18f;
+        [SerializeField] private float _jumpForceDamping = 0.08f;
+        [SerializeField] private float _jumpForceHoldDamping = 0.2f;
+        private bool _jumpReady = true;
 
-        [SerializeField] private CharacterController _characterController;
-        [SerializeField] private Vector3 _moveDirection = Vector3.zero;
+        [Header("Double Jumping")]
+        [SerializeField] private UnityEvent _onDoubleJump;
+        [SerializeField] private float _doubleJumpForce = 0.18f;
+        [SerializeField] private float _doubleJumpMinimumAirTime = 0.2f;
+        [SerializeField] private int _doubleJumpAmount = 1;
+        private int _doubleJumpCurrentAmount;
+        private float _doubleJumpNextTimestamp;
 
-        [Header("Motor Properties")]
-        [SerializeField] private float _walkingSpeed = 4f;
-        [SerializeField] private float _runningSpeed = 8f;
-        [SerializeField] private float _jumpSpeed = 10f;
-        [SerializeField] private float _gravity = 20;
-        [SerializeField] private bool _alwaysRun = false;
-        [SerializeField] private float _smoothTime = 0.15f;
+        [Header("Dashing")]
+        [SerializeField] private UnityEvent _onDashChargedFull;
+        [SerializeField] private UnityEvent _onDashChargedPartial;
+        [SerializeField] private UnityEvent _onDash;
+        [SerializeField] private int _dashDefaultAmount = 2;
+        [SerializeField] private float _dashDefaultChargeTime = 2.0f;
+        [SerializeField] private float _dashChargeTimeModifier = 0f;
+        [SerializeField] private float _dashDelay = 0.2f;
+        [SerializeField] private float _dashDistance = 5f;
+        [SerializeField] private float _dashDrag = 0.2f;
+        private int _dashCurrentAmount = 2;
+        private bool _dashCharged;
+        private float _dashNextTimestamp;
+        private float _dashCurrentChargeTime = 3.0f;
 
-        private int _jumpCount = 1;
-        private int _dashCount = 1;
-        private bool _isRunning = false;
-        private Vector3 _velocity = Vector3.zero;
+        //Activities
+        private IDashActivityProvider _dashActivityProvider;
+        private IJumpActivityProvider _jumpActivityProvider;
+        private Activity _jumpActivity;
+        private Activity _dashActivity;
 
-        private void Awake()
+        protected override void Awake()
         {
-            _characterController = GetComponent<CharacterController>();
+            base.Awake();
+
+            _dashActivityProvider = GetComponent<IDashActivityProvider>();
+            _jumpActivityProvider = GetComponent<IJumpActivityProvider>();
+            _dashActivity = _dashActivityProvider.GetDashActivity();
+            _jumpActivity = _jumpActivityProvider.GetJumpActivity();
         }
 
-        public void CreateMoveDirection(Vector2 axis)
+        protected override void FixedUpdate()
         {
-            var movementSpeed = _alwaysRun || _isRunning ? _runningSpeed : _walkingSpeed;
-
-            var forward = transform.TransformDirection(Vector3.forward);
-            var right = transform.TransformDirection(Vector3.right);
-
-            var direction = (right * axis.x + forward * axis.y).normalized * movementSpeed;
-            var moveDirectionY = _moveDirection.y;
-
-            _moveDirection = Vector3.SmoothDamp(_moveDirection, direction, ref _velocity, _smoothTime);
-            _moveDirection.y = moveDirectionY;
+            UpdateThrottle();
+            UpdateForces();
+            UpdateJumpActivity();
+            UpdateDashActivity();
+            FixedMove();
         }
 
-        public void Update()
+        private void UpdateJumpActivity()
         {
-         
+            UpdateJumpOnGround();
+            Throttle.y /= 1.0f + _jumpForceDamping;
         }
 
-        public void Jump()
+        private void UpdateJumpOnGround()
         {
-            if (_characterController.isGrounded)
+            if (_jumpActivity.Active == false)
             {
-                //_jumpCount = 1;
-                _moveDirection.y = _jumpSpeed;
-                Source.PlayOneShot(JumpAudioClip);
-                //DoubleJumpMark = Time.time + DoubleJumpTimeout;
+                _jumpReady = true;
+                return;
             }
-            /*
-            else
+
+            if (Grounded == false)
             {
-                if (_jumpCount > 0 && Time.time > DoubleJumpMark)
+                if (Time.time > _doubleJumpNextTimestamp && _doubleJumpCurrentAmount > 0 && _jumpReady)
                 {
-                    _moveDirection.y = _jumpSpeed;
-                    Source.PlayOneShot(DoubleJumpAudioClip);
-                    _jumpCount--;
+                    FallSpeed = 0f;
+                    Throttle.y = _doubleJumpForce * 2 / Time.timeScale;
+                    _onDoubleJump?.Invoke();
+                    _jumpReady = false;
+                    _doubleJumpCurrentAmount--;
+                    _doubleJumpNextTimestamp = Time.time + _doubleJumpMinimumAirTime;
+                }
+                return;
+            }
+
+            _doubleJumpCurrentAmount = _doubleJumpAmount;
+
+            if (_jumpAutomatic || _jumpReady)
+            {
+                _onJump?.Invoke();
+                _doubleJumpNextTimestamp = Time.time + _doubleJumpMinimumAirTime;
+                _jumpReady = false;
+                Throttle.y = _jumpForce / Time.timeScale;
+            }
+        }
+
+        private void UpdateDashActivity()
+        {
+            if (_dashCurrentChargeTime < _dashDefaultChargeTime)
+            {
+                _dashCurrentChargeTime += Time.fixedDeltaTime * (1f + _dashChargeTimeModifier);
+                if (_dashCurrentAmount > 1)
+                {
+                    _dashCurrentAmount = Mathf.RoundToInt(Mathf.Clamp(_dashCurrentChargeTime / (_dashDefaultChargeTime / _dashDefaultAmount), 0, _dashDefaultAmount));
                 }
             }
-            */
-        }
 
-        public void Run()
-        {
-            if (_characterController.isGrounded)
-                _isRunning = true;
-        }
-
-        public void Dash()
-        {
-
-            if (Time.time > DashMark && _dashCount > 0)
+            if (_dashCurrentChargeTime >= _dashDefaultChargeTime && _dashCharged == false && Grounded)
             {
-                DashMark = Time.time + DashTimeout;
-                Source.PlayOneShot(DashAudioClip);
+                if (_dashCurrentAmount == 0)
+                {
+                    _onDashChargedFull?.Invoke();
+                }
+                else
+                {
+                    _onDashChargedPartial?.Invoke();
+                }
 
-                _moveDirection += Vector3.Scale(_moveDirection.normalized,
-                    DashDistance * new Vector3((Mathf.Log(1f / (Time.deltaTime * Drag.x + 1)) / -Time.deltaTime),
-                        0,
-                        (Mathf.Log(1f / (Time.deltaTime * Drag.z + 1)) / -Time.deltaTime)));
-
-                if (!_characterController.isGrounded)
-                    _moveDirection.y += _jumpSpeed / 2;
+                _dashCurrentAmount = _dashDefaultAmount;
+                _dashCharged = true;
             }
-        }
 
-        public void Walk()
-        {
-            if (_characterController.isGrounded)
-                _isRunning = false;
-        }
+            if (!_dashActivity.Active)
+            {
+                return;
+            }
 
-        public void Move()
-        {
-            if (!_characterController.isGrounded)
-                _moveDirection.y -= _gravity * Time.deltaTime;
-            else if (_moveDirection.y < 1)
-                _moveDirection.y = 0;
+            if (_dashCurrentAmount == 0 || Time.time < _dashNextTimestamp)
+            {
+                return;
+            }
 
-            _characterController.Move(_moveDirection * Time.deltaTime);
+            ForceAirSpeedDamping = true;
+            FallSpeed = 0f;
+            _dashCharged = false;
+            _dashCurrentAmount--;
+            _dashNextTimestamp = Time.time + _dashDelay;
+            _dashCurrentChargeTime = Mathf.Max(_dashCurrentChargeTime - _dashDefaultChargeTime / _dashDefaultAmount, 0);
+            _onDash?.Invoke();
+
+            var direction = Input == Vector2.zero ? transform.forward : Throttle.normalized;
+            Throttle += Vector3.Scale(
+                    direction,
+                    _dashDistance * new Vector3(Mathf.Log(1f / (Time.fixedDeltaTime * _dashDrag + 1)) / -Time.fixedDeltaTime,
+                    0,
+                    Mathf.Log(1f / (Time.fixedDeltaTime * _dashDrag + 1)) / -Time.fixedDeltaTime)) / Time.timeScale;
         }
     }
 }

@@ -9,16 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8434797277996088129}
-  - component: {fileID: 320585596584274010}
   - component: {fileID: -4440993398804152683}
   - component: {fileID: 296206446}
-  - component: {fileID: 296206451}
-  - component: {fileID: 296206444}
-  - component: {fileID: 296206445}
-  - component: {fileID: 296206447}
+  - component: {fileID: 8177736901135924719}
+  - component: {fileID: 6595991679166959806}
+  - component: {fileID: 67549385605008334}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,24 +33,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8896602050049835798}
-  - {fileID: 7602374610877579272}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &320585596584274010
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2192601379534239207}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-4440993398804152683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,103 +67,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!82 &296206451
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2192601379534239207}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.4
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &296206444
+--- !u!114 &8177736901135924719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,10 +76,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2192601379534239207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 868c0ddd39f5d854f876658aa21a44b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c45c5419102926499e66e49da8a2328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &296206445
+--- !u!114 &6595991679166959806
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,28 +88,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 2192601379534239207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1ab66c8aeb390d4091ffa7a47f404e5, type: 3}
+  m_Script: {fileID: 11500000, guid: f6795bcf6ba6d9747b20ea1247a76cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Drag: {x: 0, y: 0, z: 0}
-  DashDistance: 5
-  JumpAudioClip: {fileID: 8300000, guid: 06c494456dafa1c418fe7ac8b4005222, type: 3}
-  DoubleJumpAudioClip: {fileID: 0}
-  DoubleJumpTimeout: 0.2
-  DoubleJumpMark: 0
-  DashMark: 0
-  DashTimeout: 0.3
-  DashAudioClip: {fileID: 0}
-  Source: {fileID: 296206451}
-  _characterController: {fileID: 0}
-  _moveDirection: {x: 0, y: 0, z: 0}
-  _walkingSpeed: 8
-  _runningSpeed: 12
-  _jumpSpeed: 10
-  _gravity: 20
-  _alwaysRun: 1
-  _smoothTime: 0.15
---- !u!114 &296206447
+  Jump:
+    OnActive:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRelease:
+      m_PersistentCalls:
+        m_Calls: []
+    OnActiveTimeThreshold:
+      m_PersistentCalls:
+        m_Calls: []
+    ActiveTime: 0
+    MaximumActiveTime: -1
+    NextAllowedStartTime: 0
+    Name: Jump
+    _active: 0
+  Dash:
+    OnActive:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRelease:
+      m_PersistentCalls:
+        m_Calls: []
+    OnActiveTimeThreshold:
+      m_PersistentCalls:
+        m_Calls: []
+    ActiveTime: 0
+    MaximumActiveTime: -1
+    NextAllowedStartTime: 0
+    Name: Dash
+    _active: 0
+--- !u!114 &67549385605008334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,19 +130,128 @@ MonoBehaviour:
   m_GameObject: {fileID: 2192601379534239207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 359bc6c15ddbddf46984e6dbdd79f26a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fd3815256990ee42921ec2d8e45d840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isDead: 0
-  _health: 100
-  _maxHealth: 100
-  _maxHealthModifier: 130
-  _armor: 50
-  _maxArmor: 50
-  _maxArmorModifier: 100
-  _motor: {fileID: 0}
-  _input: {fileID: 0}
-  _look: {fileID: 2107163124}
+  _ceilingContact: 0
+  HeadContactAtDistance: 0.3
+  CeilingHitTransform: {fileID: 0}
+  PreviousCeilingHitTransform: {fileID: 0}
+  OnCeilingContact:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCeilingContactSeparation:
+    m_PersistentCalls:
+      m_Calls: []
+  _grounded: 0
+  CurrentHitDistance: 0
+  GroundedAtDistance: 1
+  GroundHitTransform: {fileID: 0}
+  PreviousGroundHitTransform: {fileID: 0}
+  OnGroundContact:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1260371534}
+        m_TargetAssemblyTypeName: Assets.Scripts.AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: land
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnGroundContactSeparation:
+    m_PersistentCalls:
+      m_Calls: []
+  Controller: {fileID: 0}
+  GravityModifier: 0.25
+  FallSpeed: 0
+  ForceAirSpeedDamping: 0
+  AirDamping: 0.9
+  AirControl: 0.5
+  BackwardsSpeed: 1.5
+  Acceleration: 1.5
+  SlopeFactor: 1
+  Damping: 0.17
+  _onJump:
+    m_PersistentCalls:
+      m_Calls: []
+  _jumpAutomatic: 0
+  _jumpForce: 0.18
+  _jumpForceDamping: 0.08
+  _jumpForceHoldDamping: 0.2
+  _onDoubleJump:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1260371534}
+        m_TargetAssemblyTypeName: Assets.Scripts.AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: double jump
+          m_BoolArgument: 0
+        m_CallState: 2
+  _doubleJumpForce: 0.18
+  _doubleJumpMinimumAirTime: 0.2
+  _doubleJumpAmount: 1
+  _onDashChargedFull:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1260371534}
+        m_TargetAssemblyTypeName: Assets.Scripts.AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: charge full
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onDashChargedPartial:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1260371534}
+        m_TargetAssemblyTypeName: Assets.Scripts.AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: charge partial
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onDash:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1260371534}
+        m_TargetAssemblyTypeName: Assets.Scripts.AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: dash
+          m_BoolArgument: 0
+        m_CallState: 2
+  _dashDefaultAmount: 2
+  _dashDefaultChargeTime: 2
+  _dashChargeTimeModifier: 0
+  _dashDelay: 0.2
+  _dashDistance: 5
+  _dashDrag: 0.2
 --- !u!1 &4254262705033607386
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +263,8 @@ GameObject:
   - component: {fileID: 8896602050049835798}
   - component: {fileID: 5706276128783535219}
   - component: {fileID: 3276572891594009637}
-  - component: {fileID: 2107163124}
+  - component: {fileID: 1533028574703055723}
+  - component: {fileID: 1260371534}
   m_Layer: 0
   m_Name: PlayerCam
   m_TagString: MainCamera
@@ -271,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4254262705033607386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.714, z: 0}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8434797277996088129}
@@ -290,7 +299,7 @@ Camera:
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
-  m_FOVAxisMode: 0
+  m_FOVAxisMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
   m_FocalLength: 50
@@ -302,7 +311,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 84.03405
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -328,7 +337,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4254262705033607386}
   m_Enabled: 1
---- !u!114 &2107163124
+--- !u!114 &1533028574703055723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,76 +346,73 @@ MonoBehaviour:
   m_GameObject: {fileID: 4254262705033607386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1b33e28453046c43bb3b74e1b319214, type: 3}
+  m_Script: {fileID: 11500000, guid: cf90766a7619074489470016f412ccd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clampInDegrees: {x: 360, y: 180}
-  lockCursor: 1
-  sensitivity: {x: 2, y: 2}
-  smoothing: {x: 3, y: 3}
-  targetDirection: {x: 0, y: 0}
-  targetCharacterDirection: {x: 0, y: 0}
-  characterBody: {fileID: 2192601379534239207}
---- !u!1001 &7607108916883127030
-PrefabInstance:
+  ClampInDegrees: {x: 360, y: 180}
+  LockCursor: 1
+  Sensitivity: {x: 2, y: 2}
+  Smoothing: {x: 3, y: 3}
+  TargetDirection: {x: 0, y: 0}
+  TargetCharacterDirection: {x: 0, y: 0}
+  HeightOffset: 1
+  SmoothTime: 1
+  CharacterBody: {fileID: 2192601379534239207}
+--- !u!114 &1260371534
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8434797277996088129}
-    m_Modifications:
-    - target: {fileID: 1613918766761302, guid: 2bb5e4cc147e24edcace9a85168ab667, type: 3}
-      propertyPath: m_Name
-      value: man-worker_T
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765474592717566, guid: 2bb5e4cc147e24edcace9a85168ab667, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765474592717566, guid: 2bb5e4cc147e24edcace9a85168ab667, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765474592717566, guid: 2bb5e4cc147e24edcace9a85168ab667, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765474592717566, guid: 2bb5e4cc147e24edcace9a85168ab667, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765474592717566, guid: 2bb5e4cc147e24edcace9a85168ab667, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.0000000033522625
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765474592717566, guid: 2bb5e4cc147e24edcace9a85168ab667, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765474592717566, guid: 2bb5e4cc147e24edcace9a85168ab667, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765474592717566, guid: 2bb5e4cc147e24edcace9a85168ab667, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765474592717566, guid: 2bb5e4cc147e24edcace9a85168ab667, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765474592717566, guid: 2bb5e4cc147e24edcace9a85168ab667, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765474592717566, guid: 2bb5e4cc147e24edcace9a85168ab667, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2bb5e4cc147e24edcace9a85168ab667, type: 3}
---- !u!4 &7602374610877579272 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4765474592717566, guid: 2bb5e4cc147e24edcace9a85168ab667,
-    type: 3}
-  m_PrefabInstance: {fileID: 7607108916883127030}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254262705033607386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53cdefe4c9194f44fbcbaf1faa4b5ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sounds:
+  - Name: jump
+    AudioClips: []
+    Source: {fileID: 0}
+    RandomPitchOffset: 0
+    OriginalPitch: 0
+    Volume: 0
+  - Name: dash
+    AudioClips:
+    - {fileID: 8300000, guid: eb632e8a48798dc45a7b2564a7979026, type: 3}
+    Source: {fileID: 0}
+    RandomPitchOffset: 0
+    OriginalPitch: 0
+    Volume: 1
+  - Name: land
+    AudioClips:
+    - {fileID: 8300000, guid: 832a089de5ef87b43928ee1344296d8e, type: 3}
+    - {fileID: 8300000, guid: 993ee2a558a752b458c6ed20a460e534, type: 3}
+    - {fileID: 8300000, guid: 9d6189ba0d2c6ee4a890916c98ac01c4, type: 3}
+    - {fileID: 8300000, guid: 9c4b876601132924a9fd154bd5373d56, type: 3}
+    Source: {fileID: 0}
+    RandomPitchOffset: 0
+    OriginalPitch: 0
+    Volume: 0.2
+  - Name: double jump
+    AudioClips:
+    - {fileID: 8300000, guid: b3949715f1ea3cf4289b1db2ba676023, type: 3}
+    - {fileID: 8300000, guid: d27322d34e178a64ea9e1994d06f669d, type: 3}
+    Source: {fileID: 0}
+    RandomPitchOffset: 0
+    OriginalPitch: 0
+    Volume: 0.6
+  - Name: charge full
+    AudioClips:
+    - {fileID: 8300000, guid: 7d9dac754dc3854418c06543c641799f, type: 3}
+    Source: {fileID: 0}
+    RandomPitchOffset: 0
+    OriginalPitch: 0
+    Volume: 0.4
+  - Name: charge partial
+    AudioClips:
+    - {fileID: 8300000, guid: bf1a6eb21cad9a6458f536fafb0d9f05, type: 3}
+    Source: {fileID: 0}
+    RandomPitchOffset: 0
+    OriginalPitch: 0
+    Volume: 0.5
