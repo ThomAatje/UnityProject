@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 
 namespace Assets.Scripts.Actor
 {
@@ -35,12 +34,6 @@ namespace Assets.Scripts.Actor
                 updateDeltaTime = 0;
             }
                 
-        }
-
-        protected override void Die(GameObject sender)
-        {
-            base.Die(sender);
-            Destroy(this);
         }
     }
 }

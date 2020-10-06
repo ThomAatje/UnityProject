@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3130266456604184428}
   - component: {fileID: 7037463856726627788}
   - component: {fileID: 1944178947501680393}
-  - component: {fileID: 1106448093694432117}
   m_Layer: 0
   m_Name: zombie_man
   m_TagString: Enemy
@@ -148,16 +147,3 @@ MonoBehaviour:
   _maxArmorModifier: 100
   targetObject: {fileID: 0}
   goalPosition: {x: 0, y: 0, z: 0}
---- !u!114 &1106448093694432117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3069078334261017266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 700fd158bd3ee4d47943098f56626e69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamageReducer: 0
