@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine;
+using UnityEngine.Events;
 
-namespace Assets.Scripts.Characters
+namespace Assets.Scripts.Actor
 {
     public class Zombie : Character
     {
@@ -23,6 +22,7 @@ namespace Assets.Scripts.Characters
         void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            targetObject = GameObject.FindGameObjectWithTag("Player");
         }
 
         // Update is called once per frame
@@ -35,6 +35,12 @@ namespace Assets.Scripts.Characters
                 updateDeltaTime = 0;
             }
                 
+        }
+
+        protected override void Die(GameObject sender)
+        {
+            base.Die(sender);
+            Destroy(this);
         }
     }
 }

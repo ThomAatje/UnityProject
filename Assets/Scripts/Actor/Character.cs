@@ -1,34 +1,38 @@
 ﻿using System;
+using Assets.Scripts.Characters;
 using UnityEngine;
 
 //This is the base class of all characters, including the NPC's
-namespace Assets.Scripts.Characters
+namespace Assets.Scripts.Actor
 {
     public abstract class Character : MonoBehaviour
     {
         [SerializeField] private bool _isDead;
-
-        [Header("Character Statistics")]
         [SerializeField] private float _health = 100f;
         [SerializeField] private float _maxHealth = 100f;
         [SerializeField] private float _maxHealthModifier = 130f;
         [SerializeField] private float _armor = 50f;
         [SerializeField] private float _maxArmor = 50f;
         [SerializeField] private float _maxArmorModifier = 100f;
-
         public IDamageCalculator DamageCalculator;
-
 
         private float _defaultHealth;
         private float _defaultArmor;
 
+        public bool IsDead
+        {
+            get
+            {
+                return _isDead;
+            }
+        }
 
-        private void Start()
+        private void Awake()
         {
             _defaultHealth = _maxHealth;
             _defaultArmor = _maxArmorModifier;
 
-            DamageCalculator = GetComponent<IDamageCalculator>();
+            DamageCalculator = GetComponent<DamageCalculator>();
 
             if (DamageCalculator == null)
                 throw new NullReferenceException("A component with the IDamageCalculator is required for a Character.");
@@ -40,7 +44,7 @@ namespace Assets.Scripts.Characters
         /// <param name="amount">The amount of damage</param>
         /// <param name="sender">Who caused the damage</param>
         /// <param name="ignoreArmor">Whether or the armor need to be ignored</param>
-        public void TakeDamage(float amount, GameObject sender, bool ignoreArmor = false)
+        public virtual void TakeDamage(float amount, GameObject sender, bool ignoreArmor = false)
         {
             if (_isDead)
                 return;
@@ -50,7 +54,7 @@ namespace Assets.Scripts.Characters
 
             _health -= amount;
 
-            if (_health < 0)
+            if (_health <= 0)
             {
                 Die(sender);
                 return;
@@ -78,7 +82,7 @@ namespace Assets.Scripts.Characters
             _maxArmor = _maxArmor + amount > _maxArmorModifier ? _maxArmorModifier : _maxArmor;
 
 
-        protected void Die(GameObject sender)
+        protected virtual void Die(GameObject sender)
         {
             Debug.Log($"Character was killed by: {sender}", this);
             _isDead = true;

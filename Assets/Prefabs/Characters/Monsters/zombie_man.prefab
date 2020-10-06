@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3130266456604184428}
   - component: {fileID: 7037463856726627788}
   - component: {fileID: 1944178947501680393}
-  - component: {fileID: 7251552644455231859}
+  - component: {fileID: 1106448093694432117}
   m_Layer: 0
   m_Name: zombie_man
   m_TagString: Enemy
@@ -101,8 +101,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  m_Radius: 0.2674141
-  m_Height: 1.8296546
+  m_Radius: 0.36
+  m_Height: 1.89
   m_Direction: 1
   m_Center: {x: 0, y: 0.91551894, z: 0.024380408}
 --- !u!195 &7037463856726627788
@@ -114,7 +114,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3069078334261017266}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.9151479
+  m_Radius: 0.41
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3069078334261017266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0ce8eed6ff99d6409c6d8ad3c3ae642, type: 3}
+  m_Script: {fileID: 11500000, guid: c5127edc091537d4aa8ed64cf37a4f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _isDead: 0
@@ -147,20 +147,17 @@ MonoBehaviour:
   _maxArmor: 50
   _maxArmorModifier: 100
   targetObject: {fileID: 0}
-  goalPosition: {x: 10, y: 0, z: 0}
---- !u!111 &7251552644455231859
-Animation:
+  goalPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &1106448093694432117
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3069078334261017266}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: -203655887218126122, guid: 3005381cf50ef2a4abaea51b38e73a1f,
-    type: 3}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 700fd158bd3ee4d47943098f56626e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageReducer: 0
