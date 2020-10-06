@@ -294,6 +294,9 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
+<<<<<<< HEAD
+    m_Name: Dash
+=======
     m_Name: Enable Debug Button 1
     descriptiveName: 
     descriptiveNegativeName: 
@@ -407,11 +410,14 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Debug Multiplier
+>>>>>>> dev_idris
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: left shift
     altNegativeButton: 
+<<<<<<< HEAD
+=======
     altPositiveButton: joystick button 3
     gravity: 0
     dead: 0
@@ -428,6 +434,7 @@ InputManager:
     negativeButton: left
     positiveButton: right
     altNegativeButton: 
+>>>>>>> dev_idris
     altPositiveButton: 
     gravity: 1000
     dead: 0.001
@@ -437,6 +444,8 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 0
+<<<<<<< HEAD
+=======
   - serializedVersion: 3
     m_Name: Debug Vertical
     descriptiveName: 
@@ -485,3 +494,4 @@ InputManager:
     type: 2
     axis: 5
     joyNum: 0
+>>>>>>> dev_idris
