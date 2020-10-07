@@ -26,6 +26,9 @@ namespace Assets.Scripts
             // Set target direction to the camera's initial orientation.
             TargetDirection = transform.localRotation.eulerAngles;
 
+            if (!CharacterBody)
+                CharacterBody = GameObject.FindGameObjectWithTag("Player");
+
             // Set target direction for the character body to its inital state.
             if (CharacterBody)
                 TargetCharacterDirection = CharacterBody.transform.localRotation.eulerAngles;
@@ -66,16 +69,9 @@ namespace Assets.Scripts
 
             transform.localRotation = Quaternion.AngleAxis(-_mouseAbsolute.y, targetOrientation * Vector3.right) * targetOrientation;
 
-            //if (CharacterBody)
-            {
-                var yRotation = Quaternion.AngleAxis(_mouseAbsolute.x, Vector3.up);
-                CharacterBody.transform.localRotation = yRotation * targetCharacterOrientation;
-            }
-            //else
-            {
-                var yRotation = Quaternion.AngleAxis(_mouseAbsolute.x, transform.InverseTransformDirection(Vector3.up));
-                transform.localRotation *= yRotation;
-            }
+            CharacterBody.transform.localRotation = Quaternion.AngleAxis(_mouseAbsolute.x, Vector3.up) * targetCharacterOrientation;
+
+            transform.localRotation *= Quaternion.AngleAxis(_mouseAbsolute.x, transform.InverseTransformDirection(Vector3.up));
 
             transform.position =
                 Vector3.Lerp(transform.position, CharacterBody.transform.position + Vector3.up * HeightOffset, Time.deltaTime * SmoothTime);

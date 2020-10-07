@@ -167,6 +167,11 @@ namespace Assets.Scripts.Movement
 
         public void OnDrawGizmosSelected()
         {
+            if (Controller == null)
+            {
+                return;
+            }
+
             Gizmos.color = Color.cyan;
             Debug.DrawLine(transform.position, transform.position + Vector3.down * CurrentHitDistance);
             Gizmos.DrawWireSphere(transform.position + Vector3.down * CurrentHitDistance, Controller.radius);
