@@ -11,9 +11,9 @@ namespace Assets.Scripts.Movement
         public float Acceleration = 0.3f;
         public float SlopeFactor = 1.0f;
         public float Damping = 0.17f;
-        protected Vector2 Input;
-        protected Vector3 Throttle;
-        private Vector3 _moveDirection;
+        [SerializeField] protected Vector2 Input;
+        [SerializeField] protected Vector3 Throttle;
+        [SerializeField] private Vector3 _moveDirection;
 
         public Vector2 GetInput()
         {
