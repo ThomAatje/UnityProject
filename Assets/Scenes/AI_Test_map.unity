@@ -340,6 +340,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1559454918}
   m_PrefabAsset: {fileID: 0}
+--- !u!143 &411998754 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 296206446, guid: 63bd7a98d71f7754ea849b404374c380,
+    type: 3}
+  m_PrefabInstance: {fileID: 492046714}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &478410147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -426,10 +432,30 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 67549385605008334, guid: 63bd7a98d71f7754ea849b404374c380,
+        type: 3}
+      propertyPath: Controller
+      value: 
+      objectReference: {fileID: 411998754}
+    - target: {fileID: 67549385605008334, guid: 63bd7a98d71f7754ea849b404374c380,
+        type: 3}
+      propertyPath: FallSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 320585596584274010, guid: 63bd7a98d71f7754ea849b404374c380,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1533028574703055723, guid: 63bd7a98d71f7754ea849b404374c380,
+        type: 3}
+      propertyPath: HeightOffset
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1533028574703055723, guid: 63bd7a98d71f7754ea849b404374c380,
+        type: 3}
+      propertyPath: SmoothTime
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2192601379534239207, guid: 63bd7a98d71f7754ea849b404374c380,
         type: 3}
@@ -450,6 +476,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AllowMSAA
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706276128783535219, guid: 63bd7a98d71f7754ea849b404374c380,
+        type: 3}
+      propertyPath: field of view
+      value: 54.484795
       objectReference: {fileID: 0}
     - target: {fileID: 7527679849394975780, guid: 63bd7a98d71f7754ea849b404374c380,
         type: 3}
@@ -2404,12 +2435,6 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
---- !u!1 &1770341302 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1829304698282786, guid: bb6437ac639ca7c4d9e3ae9b5a5efe2b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1139305272}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1771501194
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,10 +2644,7 @@ MonoBehaviour:
   m_Script: {fileID: 2044396057}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries:
-  - id: 0
-    category: 0
-    gameObject: {fileID: 1770341302}
+  m_Entries: []
 --- !u!4 &1956273264
 Transform:
   m_ObjectHideFlags: 19

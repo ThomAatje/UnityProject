@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf384b154398e341b6b29969c078198, type: 3}
   m_Name: MotionBlur
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   quality:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 2.21
+    m_Value: 0.5
     min: 0
   maximumVelocity:
     m_OverrideState: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   m_SampleCount:
-    m_OverrideState: 1
-    m_Value: 32
+    m_OverrideState: 0
+    m_Value: 8
     min: 2
 --- !u!114 &-1016694868962581565
 MonoBehaviour:
@@ -150,18 +150,18 @@ MonoBehaviour:
     m_Value: 0
   exposure:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 11
   multiplier:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
     min: 0
   upperHemisphereLuxValue:
     m_OverrideState: 0
-    m_Value: 0.46607146
+    m_Value: 0.4660715
     min: 0
   upperHemisphereLuxColor:
     m_OverrideState: 0
-    m_Value: {x: 0.18750611, y: 0.29181966, z: 0.5}
+    m_Value: {x: 0.18750614, y: 0.29181972, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 0
     m_Value: 20000
@@ -265,10 +265,10 @@ MonoBehaviour:
     showAlpha: 0
     showEyeDropper: 1
   dirtTexture:
-    m_OverrideState: 1
-    m_Value: {fileID: 2800000, guid: 346bc6cf21aa465429bda8b2670159ba, type: 3}
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
   dirtIntensity:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
     min: 0
   anamorphic:
@@ -299,7 +299,7 @@ MonoBehaviour:
     m_Value: 1
   skyAmbientMode:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
   fogType:
     m_OverrideState: 0
     m_Value: 0
